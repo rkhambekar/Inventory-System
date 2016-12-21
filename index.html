@@ -1,0 +1,90 @@
+<!DOCTYPE html >
+<html ng-app="inventory">
+
+<head>
+  <title>Walter’s Widget Warehouse</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-controller="myController">
+  <div class="container-fluid">
+
+    <marquee>Walter’s Widget Warehouse</marquee>
+    <table class="table">
+      <tr>
+        <td colspan='2'>
+          <h3 id="center">What would to like to order today?</h3>
+        </td>
+      </tr>
+      <tr>
+        <td id="bold">Items</td>
+        <td>
+          <select ng-model="item" ng-options="item.name for item in items" ng-change="getPriceList(item);" readonly>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td id="bold">Price in <i class="fa fa-usd" aria-hidden="true"></i></td>
+        <td>
+          <input type="test" ng-model="item.price" readonly>
+        </td>
+      </tr>
+      <tr>
+        <td id="bold">Quantity</td>
+        <td>
+          <select ng-model="quantity" ng-options="q for q in itemQuantity" readonly>
+
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="button" ng-click="AddInCart()" value="Add to Cart">
+      </tr>
+    </table>
+
+    <h3>Your cart :</h3>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price per unit</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="cart in cartItems" id="center">
+          <td>{{cart.name}}</td>
+          <td>{{cart.price}}</td>
+          <td>{{cart.quantity}}</td>
+          <td>{{cart.totalAmount}}</td>
+          <th><a href ng-click="removeCartItem($index)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        </tr>
+        <tr class="panel panel-info">
+          <th colspan="3" align="right">Total Amount:</th>
+          <th colspan="2">{{subTotalAmount()}}</th>
+          <tr>
+      </tbody>
+    </table>
+  </div>
+  <footer id="center">
+    <small> &copy;&nbsp;Walter's Widget Warehouse    
+      <address><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;432 NE Grove Street
+      Smithsville, NC 21932<br/>
+        <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
+        (555) 201-3959
+      </address>
+    </small>
+  </footer>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

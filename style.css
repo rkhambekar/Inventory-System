@@ -1,0 +1,23 @@
+/* Put your css in here */
+
+body {
+  background-color: beige;
+}
+
+marquee {
+  font-size: 24px;
+  color: red;
+}
+
+h3{
+  font-size: 20px;
+  font-style: italic;
+}
+
+#center {
+  text-align: center;
+}
+
+#bold{
+  font-weight: bold;
+}
